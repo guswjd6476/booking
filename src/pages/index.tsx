@@ -12,7 +12,7 @@ const Home = () => {
     };
 
     if (currentQuestion >= questions.length) {
-        return <Recommendation answers={answers} />;
+        return <Recommendation />;
     }
 
     const question = questions[currentQuestion];

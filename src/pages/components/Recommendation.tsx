@@ -8,7 +8,6 @@ interface Book {
 }
 
 const Recommendation = () => {
-    // 선호하는 옵션에 맞는 책을 찾기 위해 임의로 id가 1인 책을 선택합니다.
     const preferredBookId = 1; // 예시로 id 1을 선택
     const recommendedBook = bookdata.find((book) => book.id === preferredBookId);
 
