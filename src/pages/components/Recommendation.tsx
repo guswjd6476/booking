@@ -1,17 +1,16 @@
 import { bookdata } from '../api/data/data'; // 데이터 파일 경로 확인
 
-interface RecommendationProps {
-    answers: string[];
+interface Book {
+    id: number;
+    title: string;
+    author: string;
+    description: string;
 }
 
-const Recommendation = ({ answers }: RecommendationProps) => {
-    // 콘솔 로그로 데이터 확인
-    console.log('Book Data:', bookdata);
-    console.log('Answers:', answers);
-
-    // 추천 책 찾기
-    const preferredOption = '읽고 감정적인 여운이 남는 책';
-    const recommendedBook = bookdata.find((book) => answers.includes(preferredOption));
+const Recommendation = () => {
+    // 선호하는 옵션에 맞는 책을 찾기 위해 임의로 id가 1인 책을 선택합니다.
+    const preferredBookId = 1; // 예시로 id 1을 선택
+    const recommendedBook = bookdata.find((book) => book.id === preferredBookId);
 
     return (
         <div className="container mx-auto p-4">
