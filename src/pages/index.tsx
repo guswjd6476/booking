@@ -12,26 +12,28 @@ const Home = () => {
     };
 
     if (currentQuestion >= questions.length) {
-        return <Recommendation />;
+        return <Recommendation answers={answers} />;
     }
 
     const question = questions[currentQuestion];
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">{question.question}</h1>
-            <ul>
-                {question.options.map((option, index) => (
-                    <li key={index}>
-                        <button
-                            onClick={() => handleAnswer(option)}
-                            className="block w-full p-2 mb-2 bg-blue-500 text-white rounded"
-                        >
-                            {option}
-                        </button>
-                    </li>
-                ))}
-            </ul>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 p-4">
+            <div className="bg-white shadow-xl rounded-lg p-6 w-full max-w-lg mx-4 md:mx-8">
+                <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">{question.question}</h1>
+                <ul className="space-y-4">
+                    {question.options.map((option, index) => (
+                        <li key={index}>
+                            <button
+                                onClick={() => handleAnswer(option)}
+                                className="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-transform transform hover:scale-105"
+                            >
+                                {option}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
