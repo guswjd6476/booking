@@ -81,7 +81,6 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers }) => {
             <h1 className="text-2xl font-bold mb-4">추천 도서</h1>
             {recommendedBook ? (
                 <div>
-                    <img src={recommendedBook.image} alt="책 모임 홍보" className="w-full h-auto" />
                     <h2 className="text-xl font-semibold">{recommendedBook.title}</h2>
                     <p className="italic">by {recommendedBook.author}</p>
                     <p>{recommendedBook.description}</p>
@@ -92,24 +91,24 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers }) => {
             <div className="mt-8">
                 <img src="https://ifh.cc/g/dpO3z2.jpg" alt="책 모임 홍보" className="w-full h-auto" />
                 <p className="mt-4 text-lg">
-                    "외않되? 내가 감기가 낳아야 포포PC방에 갈 수 있는 건 외않되?"
+                    &quot;외않되? 내가 감기가 낳아야 포포PC방에 갈 수 있는 건 외않되?&quot;
                     <br />
-                    "금일 모임 진행합니다."
+                    &quot;금일 모임 진행합니다.&quot;
                     <br />
-                    "금요일에 한다고요?"
+                    &quot;금요일에 한다고요?&quot;
                     <br />
-                    "우천시 취소입니다."
+                    &quot;우천시 취소입니다.&quot;
                     <br />
-                    "우천시는 서울 안에 있나요?"
+                    &quot;우천시는 서울 안에 있나요?&quot;
                     <br />
                     <br />
-                    이렇게 세상은 점점 '글'과 멀어져 가고 있습니다. 매년 초, 당신이 세운 '책 읽기 목표', 잘 이루고
-                    계신가요?
+                    이렇게 세상은 점점 &apos;글&apos;과 멀어져 가고 있습니다. 매년 초, 당신이 세운 &apos;책 읽기
+                    목표&apos;, 잘 이루고 계신가요?
                     <br />
                     <br />
                     책 읽는 습관을 기르고 싶다면, 먼저 책이 재밌다는 것을 알아야 합니다. 이 모임에서는 2주간 4개의 책을
-                    '듣고' '나누며' 책과 친해지는 시간을 가질 예정입니다. 책이 재미있다는 걸 알게 되면, 자연스럽게 책을
-                    읽는 습관을 들일 수 있습니다.
+                    &apos;듣고&apos; &apos;나누며&apos; 책과 친해지는 시간을 가질 예정입니다. 책이 재미있다는 걸 알게
+                    되면, 자연스럽게 책을 읽는 습관을 들일 수 있습니다.
                     <br />
                     <br />
                     💙 **모임 일정**
