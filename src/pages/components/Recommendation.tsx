@@ -8,7 +8,7 @@ interface Book {
 }
 
 interface RecommendationProps {
-    answers: string[];
+    answers?: string[];
 }
 
 const calculateBookScore = (answers: string[] = []): number | undefined => {
@@ -72,7 +72,7 @@ const calculateBookScore = (answers: string[] = []): number | undefined => {
     return parseInt(Object.keys(scores).find((key) => scores[parseInt(key)] === maxScore) || '1');
 };
 
-const Recommendation: React.FC<RecommendationProps> = ({ answers }) => {
+const Recommendation: React.FC<RecommendationProps> = ({ answers = [] }) => {
     const preferredBookId = calculateBookScore(answers);
     const recommendedBook = bookdata.find((book) => book.id === preferredBookId);
 
@@ -81,6 +81,7 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers }) => {
             <h1 className="text-2xl font-bold mb-4">추천 도서</h1>
             {recommendedBook ? (
                 <div>
+                    <img src={recommendedBook.image} />
                     <h2 className="text-xl font-semibold">{recommendedBook.title}</h2>
                     <p className="italic">by {recommendedBook.author}</p>
                     <p>{recommendedBook.description}</p>
