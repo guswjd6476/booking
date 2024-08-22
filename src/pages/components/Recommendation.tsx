@@ -5,6 +5,7 @@ interface Book {
     title: string;
     author: string;
     description: string;
+    image?: string;
 }
 
 interface RecommendationProps {
@@ -23,44 +24,45 @@ const calculateBookScore = (answers: string[] = []): number | undefined => {
     answers.forEach((answer, index) => {
         switch (index) {
             case 0:
-                if (answer === '권력과 부패') scores[1]++; // 동물농장
-                else scores[2]++; // 마이너리티 디자인
+                if (answer === '권력과 부패') scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
+                else scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
                 break;
             case 1:
-                if (answer === '농장과 동물') scores[1]++; // 동물농장
-                else scores[2]++; // 마이너리티 디자인
+                if (answer === '모든 시대를 관통한 문제')
+                    scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
+                else scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
                 break;
             case 2:
                 if (answer === '디스토피아적') scores[3]++; // 멋진 신세계
-                else scores[4]++; // 참을 수 없는 존재의 가벼움
+                else scores[1]++, scores[2]++, scores[4]++; // 동물농장, 마이너리티 디자인, 참을 수 없는 존재의 가벼움
                 break;
             case 3:
-                if (answer === '어두운 분위기') scores[3]++; // 멋진 신세계
-                else scores[4]++; // 참을 수 없는 존재의 가벼움
+                if (answer === '어두운 분위기') scores[3]++, scores[4]++; // 멋진 신세계, 참을 수 없는 존재의 가벼움
+                else scores[1]++, scores[2]++; // 동물농장, 마이너리티 디자인
                 break;
             case 4:
-                if (answer === '풍자와 비판') scores[1]++; // 동물농장
-                else scores[2]++; // 마이너리티 디자인
+                if (answer === '풍자와 비판') scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
+                else scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
                 break;
             case 5:
                 if (answer === '철학적 성찰') scores[4]++; // 참을 수 없는 존재의 가벼움
-                else scores[3]++; // 멋진 신세계
+                else scores[1]++, scores[2]++, scores[3]++; // 동물농장, 마이너리티 디자인, 멋진 신세계
                 break;
             case 6:
-                if (answer === '단순한 구조') scores[1]++; // 동물농장
-                else scores[2]++; // 마이너리티 디자인
+                if (answer === '단순한 구조') scores[1]++, scores[2]++; // 동물농장, 마이너리티 디자인
+                else scores[3]++, scores[4]++; // 멋진 신세계, 참을 수 없는 존재의 가벼움
                 break;
             case 7:
-                if (answer === '해피 엔딩') scores[1]++; // 동물농장
-                else scores[4]++; // 참을 수 없는 존재의 가벼움
+                if (answer === '해피 엔딩') scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
+                else scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
                 break;
             case 8:
-                if (answer === '강한 의지') scores[3]++; // 멋진 신세계
-                else scores[4]++; // 참을 수 없는 존재의 가벼움
+                if (answer === '강한 의지') scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
+                else scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
                 break;
             case 9:
-                if (answer === '과거') scores[1]++; // 동물농장
-                else scores[3]++; // 멋진 신세계
+                if (answer === '과거') scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
+                else scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
                 break;
             default:
                 break;
@@ -77,25 +79,29 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers = [] }) => {
     const recommendedBook = bookdata.find((book) => book.id === preferredBookId);
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">추천 도서</h1>
+        <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg">
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">추천 도서</h1>
             {recommendedBook ? (
-                <div>
-                    <img src={recommendedBook.image} />
-                    <h2 className="text-xl font-semibold">{recommendedBook.title}</h2>
-                    <p className="italic">by {recommendedBook.author}</p>
-                    <p>{recommendedBook.description}</p>
+                <div className="flex flex-col items-center">
+                    <img
+                        src={recommendedBook.image}
+                        alt={recommendedBook.title}
+                        className="w-64 h-96 object-cover mb-4 rounded-lg shadow-md"
+                    />
+                    <h2 className="text-2xl font-semibold text-gray-700">{recommendedBook.title}</h2>
+                    <p className="italic text-gray-600 mt-2">by {recommendedBook.author}</p>
+                    <p className="text-gray-700 mt-4 text-center">{recommendedBook.description}</p>
                 </div>
             ) : (
-                <p>추천할 책이 없습니다.</p>
+                <p className="text-center text-gray-500">추천할 책이 없습니다.</p>
             )}
-            <div className="mt-8">
+            <div className="mt-10">
                 <img
                     src="https://ifh.cc/g/dpO3z2.jpg"
                     alt="책 모임 홍보"
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-lg shadow-lg"
                 />
-                <p className="mt-4 text-lg">
+                <p className="mt-6 text-lg leading-7 text-gray-700">
                     &quot;외않되? 내가 감기가 낳아야 포포PC방에 갈 수 있는 건 외않되?&quot;
                     <br />
                     &quot;금일 모임 진행합니다.&quot;
