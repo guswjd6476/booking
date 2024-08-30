@@ -1,3 +1,4 @@
+import React from 'react';
 import { bookdata } from '../api/data/data'; // 데이터 파일 경로 확인
 
 interface Book {
@@ -47,22 +48,6 @@ const calculateBookScore = (answers: string[] = []): number | undefined => {
             case 5:
                 if (answer === '철학적 성찰') scores[4]++; // 참을 수 없는 존재의 가벼움
                 else scores[1]++, scores[2]++, scores[3]++; // 동물농장, 마이너리티 디자인, 멋진 신세계
-                break;
-            case 6:
-                if (answer === '단순한 구조') scores[1]++, scores[2]++; // 동물농장, 마이너리티 디자인
-                else scores[3]++, scores[4]++; // 멋진 신세계, 참을 수 없는 존재의 가벼움
-                break;
-            case 7:
-                if (answer === '해피 엔딩') scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
-                else scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
-                break;
-            case 8:
-                if (answer === '강한 의지') scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
-                else scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
-                break;
-            case 9:
-                if (answer === '과거') scores[1]++, scores[3]++; // 동물농장, 멋진 신세계
-                else scores[2]++, scores[4]++; // 마이너리티 디자인, 참을 수 없는 존재의 가벼움
                 break;
             default:
                 break;
@@ -122,10 +107,10 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers = [] }) => {
                     되면, 자연스럽게 책을 읽는 습관을 들일 수 있습니다.
                     <br />
                     <br />
-                    💙 **모임 일정**
+                    💙 모임 일정
                     <br />
                     <br />
-                    1회차: **8월 27일 (화)**
+                    1회차: 8월 29일 (목)
                     <br />
                     **책:** 동물농장
                     <br />
@@ -134,7 +119,7 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers = [] }) => {
                     고전입니다.
                     <br />
                     <br />
-                    2회차: **8월 29일 (목)**
+                    2회차: 9월 3일 (화)
                     <br />
                     **책:** 마이너리티 디자인
                     <br />
@@ -142,7 +127,7 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers = [] }) => {
                     승화시켜, 약점을 강점으로 바꾸는 방법을 제시하는 책입니다.
                     <br />
                     <br />
-                    3회차: **9월 3일 (화)**
+                    3회차: 9월 5일 (목)
                     <br />
                     **책:** 멋진 신세계
                     <br />
@@ -150,7 +135,7 @@ const Recommendation: React.FC<RecommendationProps> = ({ answers = [] }) => {
                     사회에서의 인간의 삶을 그립니다. 디스토피아적 사회에 대한 날카로운 비판을 담고 있습니다.
                     <br />
                     <br />
-                    4회차: **9월 5일 (목)**
+                    4회차: 9월 10일 (화)
                     <br />
                     **책:** 참을 수 없는 존재의 가벼움
                     <br />
